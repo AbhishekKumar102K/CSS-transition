@@ -1,38 +1,206 @@
-.App {
-  text-align: center;
+.app {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.animation-container {
+  box-shadow: 0 0 20px 5px grey;
+  position: absolute;
+  width: 630px;
+  padding: 0 20px;
+  height: 216px;
+  right: 40px;
+  bottom: 30px;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.modal-content {
+  height: 100%;
+  width: 50%;
+  font-size: 2rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+  
+  animation-name: scrollRight;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  position: relative;
+
+  z-index: 20;
+}
+
+.modal-content-text {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+} 
+
+.row-2 {
+  animation-name: scrollSlight;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+}
+
+.start-now-button {
+  height: 46px;
+  width: 80px;
+  padding: 0 30px;
+  border-radius: 25px;
+  display: flex;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #f03454;
+  border: 1px solid #f03454;
+
+  animation-name: scrollButton;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+}
+
+.start-now-button:hover {
+  cursor: pointer;
+  color: #f03454;
+  background-color: white;
+}
+
+.black-text {
+  line-height: 1.2;
+  color: #3e3852;
+  margin: 0 5px;
+  letter-spacing: 0.96px;
+}
+
+.grey-text {
+  color: grey;
+  line-height: 1.2;
+  margin: 0 5px;
+  letter-spacing: 0.96px;
+}
+
+.scroll-box {
+  /* display: none; */
+  width: 50%;
+  position: absolute;
+  top: 50px;
+  /* height: 100%; */
+  z-index: 0;
+  transition: 0.5s;
+  transform: translateX(100%);
+  animation-name: scrollup;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  background-image: linear-gradient(to bottom, transparent, white);
+}
+
+.mask {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 50%;  
+  height: 100%;
+  transform: translateX(100%);
+  background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0) 50%, white 100%);
+}
+
+.checklist-row {
+  width: 85%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 2px;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(62, 56, 82, 0.5);
+  border-radius: 6px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.checked {
+  animation-name: colorChange;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.checked-color {
+  animation-name: textColorChange;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+}
+
+.checkmark {
+  width: 60%;
+  height: 40%;
+  background: url(./res/checkmark.svg) no-repeat;
+  background-size: contain;
+}
+
+.checklist-name {
+  margin-left: 15px;
+}
+
+.checklist-price {
+  margin-left: auto  ;
+}
+
+@keyframes colorChange {
+  0% {background-color: white}
+  10% {background-color: #f03454;}
+  50% {background-color: #f03454;}
+  100% {background-color: white;}
+}
+
+
+@keyframes textColorChange {
+  0% { color: #3e3852;}
+  10% {color: #f03454;}
+  50% {color: #f03454;}
+  100% { color: #3e3852;}
+}
+
+@keyframes scrollup {
+  0%   {top: 40px;opacity: 0;}
+  15%   {top: 40px;opacity: 1;}
+  22%  {top: -120px;opacity: 1;}
+  37%  {top: -120px;opacity: 1;}
+  45%  {top: -330px;opacity: 1;}
+  60%  {opacity: 0;}
+  100% {top: -330px;opacity: 0;}
+}
+
+@keyframes scrollRight {
+  0%  {transform: translateX(0);}
+  55%  {transform: translateX(0);}
+  65%  {transform: translateX(180px);}
+  90% {transform: translateX(180px);}
+}
+
+@keyframes scrollSlight {
+  0%  {transform: translateX(0);}
+  55%  {transform: translateX(0);}
+  65%  {transform: translateX(20px);}
+  90% {transform: translateX(20px);}
+}
+
+@keyframes scrollButton {
+  0%  {transform: translateX(0);}
+  55%  {transform: translateX(0);}
+  65%  {transform: translateX(40px);}
+  90% {transform: translateX(40px);}
 }
